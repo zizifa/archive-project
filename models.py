@@ -62,9 +62,9 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
                 details['author'] = csv_info['author'][i]
                 fileobject['details'] = details
                 if metadata['type'] =='zip':
-                    fileobject['files_inside'] = metadata['inner_files']
-                elif fileobject['type'] == 'pdf':
                     fileobject['files_inside'] = []
+                elif fileobject['type'] == 'pdf':
+                    fileobject['files_inside'] = ['xx']
                 else:
                     pass
             else:
