@@ -64,19 +64,7 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
                 if metadata['type'] =='zip':
                     fileobject['files_inside'] = metadata['inner_files']
                 elif fileobject['type'] == 'pdf':
-                    utils.convert_pdf_img(dir=dir,entity=db_objects['identifier'],pdf_file=name)
-                    images = []
-                    image_files = utils.get_image_files(dir=dir,entity=db_objects['identifier'],pdf_file=name)
-                    for count_image,image in enumerate(image_files):
-                        image_object = {}
-                        image_object['width'] = utils.get_image_meta(image)['width']
-                        image_object['height'] = utils.get_image_meta(image)['height']
-                        image_object['local_address'] = image
-                        images.append(image_object)
-#                    print(images)
-                    fileobject['files_inside'] = images
-                    fileobject['pdf_page_number'] = count_image
-                    fileobject['thumbnail'] = NEW_FILE_BASE_DIR + '/'+dir+'/'+ db_objects['identifier']+'/'+f'{name}_files'+'/'+f"{name.strip('.pdf')}_thumb.png"
+                    fileobject['files_inside'] = []
                 else:
                     pass
             else:
