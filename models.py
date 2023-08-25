@@ -5,6 +5,11 @@ import utils
 import requests
 from termcolor import colored
 from utils import LOCAL_ADDRESS,MONGO_CON_STR,NEW_FILE_BASE_DIR,OLD_FILE_BASE_DIR
+from yattag import Doc, indent
+import json
+from pathlib import Path
+from os import chdir
+
 # Create your models here.
 
 def connect_to_mongo(*,collection_name):
@@ -35,6 +40,26 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
         db_objects['description'] = csv_info['description'][i]
         db_objects['topics'] = csv_info['topics'][i].split("|")
         files_inside = csv_info['files'][i].split("|")
+
+        #-----------------------------------------------------------------------------------------------------------
+        json_name = this_identifier + ".json"
+        data = {
+            "identifier": this_identifier ,
+            "ocr_status": "",
+            "local_address": f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/",
+            "date_created": datetime.today().strftime('%Y-%m-%d'),
+            "date_updated":datetime.today().strftime('%Y-%m-%d') ,
+            "collections": csv_info['collections'][i].split("|"),
+            "description": csv_info['description'][i],
+            "topics": csv_info['topics'][i].split("|"),
+        }
+
+        jsonFile = open(f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/{json_name}", "w+")
+        jsonFile.write(data)
+        jsonFile.close()
+        #-----------------------------------------------------------------------------------------------------------
+
+
         attachment = []
         for file in files_inside:
             fileobject = {}
