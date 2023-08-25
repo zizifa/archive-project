@@ -1,4 +1,4 @@
-i#from django.db import models
+#from django.db import models
 from datetime import datetime
 from pymongo import MongoClient
 import utils
@@ -62,9 +62,9 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
                 details['author'] = csv_info['author'][i]
                 fileobject['details'] = details
                 if metadata['type'] =='zip':
-                    fileobject['files_inside'] = []
+                    fileobject['files_inside'] = metadata['inner_files']
                 elif fileobject['type'] == 'pdf':
-                    fileobject['files_inside'] = ['xx']
+                    fileobject['files_inside'] = []
                 else:
                     pass
             else:
