@@ -1,4 +1,4 @@
-cd /home/zizi/archive
+cd /home/zeinab/archive
 rm result.log
 touch result.log
 source venv/bin/activate
