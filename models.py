@@ -5,11 +5,15 @@ import utils
 import requests
 from termcolor import colored
 from utils import LOCAL_ADDRESS,MONGO_CON_STR,NEW_FILE_BASE_DIR,OLD_FILE_BASE_DIR
+<<<<<<< HEAD
 from yattag import Doc, indent
 import json
 from pathlib import Path
 from os import chdir
 
+=======
+import json
+>>>>>>> 3129fa2 (try again to fill json files)
 # Create your models here.
 
 def connect_to_mongo(*,collection_name):
@@ -41,7 +45,11 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
         db_objects['topics'] = csv_info['topics'][i].split("|")
         files_inside = csv_info['files'][i].split("|")
 
+<<<<<<< HEAD
         #-----------------------------------------------------------------------------------------------------------
+=======
+         #-----------------------------------------------------------------------------------------------------------
+>>>>>>> 3129fa2 (try again to fill json files)
         json_name = this_identifier + ".json"
         data = {
             "identifier": this_identifier ,
@@ -53,6 +61,7 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
             "description": csv_info['description'][i],
             "topics": csv_info['topics'][i].split("|"),
         }
+<<<<<<< HEAD
 
         jsonFile = open(f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/{json_name}", "w+")
         jsonFile.write(data)
@@ -60,6 +69,13 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
         #-----------------------------------------------------------------------------------------------------------
 
 
+=======
+        jsonstr = json.dumps(data)
+        jsonFiles = open(f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/{json_name}", "w+")
+        jsonFiles.write(jsonstr)
+        jsonFiles.close()
+        #-----------------------------------------------------------------------------------------------------------
+>>>>>>> 3129fa2 (try again to fill json files)
         attachment = []
         for file in files_inside:
             fileobject = {}
