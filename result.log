@@ -1,6 +1,70 @@
 ************* READ CSV INFORMAITION **************
 ************* ENTITY WITH IDENTIFIER bnr1 NOT INSERTED IN DB. FILES OF THIS ENTITY NOT EXISTS IN SERVER TO COPY **************
-************* ENTITY WITH IDENTIFIER bnr100 NOT INSERTED IN DB. FILES OF THIS ENTITY NOT EXISTS IN SERVER TO COPY **************
+************* ENTITY WITH IDENTIFIER bnr100 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr1000 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10000 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10001 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10002 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10003 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10005 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10007 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10008 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10009 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr1001 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10010 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10011 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10012 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10013 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10015 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10016 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10018 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10019 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10020 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10021 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10022 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10023 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10024 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10025 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10026 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10027 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10028 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr1003 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10030 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10032 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10033 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10034 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10035 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10036 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10037 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10038 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10039 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr1004 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10040 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10041 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10042 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10043 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10044 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10045 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10046 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10048 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr1005 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10050 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10051 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10052 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10053 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10054 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10056 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10057 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10058 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10059 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr1006 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10061 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10062 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10064 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10065 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10066 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10067 INSERTED IN DB **************
+************* ENTITY WITH IDENTIFIER bnr10068 INSERTED IN DB **************
 ************* INSERTED DATA OF DIRECTORY bnr TO MONGO **************
 COPIED FILES: 
-[]
+['bnr100-1.pdf', 'bnr1000-1.pdf', 'bnr10000-1.rar', 'bnr10001-1.pdf', 'bnr10002-1.pdf', 'bnr10003-1.pdf', 'bnr10003-2.pdf', 'bnr10005-1.pdf', 'bnr10007-1.pdf', 'bnr10008-1.pdf', 'bnr10009-1.pdf', 'bnr1001-1.pdf', 'bnr10010-1.pdf', 'bnr10011-1.pdf', 'bnr10012-1.pdf', 'bnr10013-1.pdf', 'bnr10015-1.pdf', 'bnr10016-1.rar', 'bnr10018-1.pdf', 'bnr10019-1.pdf', 'bnr10020-1.pdf', 'bnr10020-2.pdf', 'bnr10020-3.pdf', 'bnr10020-4.pdf', 'bnr10020-5.pdf', 'bnr10020-6.pdf', 'bnr10021-1.pdf', 'bnr10022-1.pdf', 'bnr10023-1.pdf', 'bnr10024-1.pdf', 'bnr10025-1.pdf', 'bnr10026-1.pdf', 'bnr10027-1.pdf', 'bnr10028-1.pdf', 'bnr1003-1.pdf', 'bnr10030-1.pdf', 'bnr10030-2.rar', 'bnr10032-1.pdf', 'bnr10033-1.pdf', 'bnr10034-1.pdf', 'bnr10035-1.pdf', 'bnr10035-2.pdf', 'bnr10036-1.pdf', 'bnr10037-1.pdf', 'bnr10038-1.pdf', 'bnr10039-1.pdf', 'bnr1004-1.pdf', 'bnr10040-1.pdf', 'bnr10041-1.pdf', 'bnr10042-1.pdf', 'bnr10043-1.pdf', 'bnr10044-1.pdf', 'bnr10045-1.pdf', 'bnr10046-1.pdf', 'bnr10048-1.pdf', 'bnr1005-1.pdf', 'bnr10050-1.pdf', 'bnr10051-1.rar', 'bnr10052-1.pdf', 'bnr10052-2.rar', 'bnr10053-1.rar', 'bnr10054-1.pdf', 'bnr10056-1.pdf', 'bnr10056-2.pdf', 'bnr10056-3.pdf', 'bnr10057-1.pdf', 'bnr10057-2.rar', 'bnr10058-1.pdf', 'bnr10058-2.rar', 'bnr10059-1.pdf', 'bnr1006-1.pdf', 'bnr10061-1.pdf', 'bnr10062-1.pdf', 'bnr10064-1.pdf', 'bnr10065-1.pdf', 'bnr10066-1.pdf', 'bnr10066-2.zip', 'bnr10067-1.pdf', 'bnr10068-1.pdf']

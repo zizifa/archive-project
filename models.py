@@ -25,11 +25,13 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
     copied_file = []
     not_copied_file_name = []
     not_copied_file_identifier = []
+#    print(csv_info['identifier'])
     for i in range(len(csv_info['identifier'])):
         db_objects = {} # db_object is original json for inserting database
         this_identifier = csv_info['identifier'][i]
         object_same = connection_string.find_one({"identifier": this_identifier}) #  object_same is None if the identifier not exists in db
         if object_same != None: # it means it exists in db so not insert
+#            print(object_same) 
             continue
         db_objects['identifier'] = this_identifier
         db_objects['ocr_status'] = ""
@@ -40,26 +42,6 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
         db_objects['description'] = csv_info['description'][i]
         db_objects['topics'] = csv_info['topics'][i].split("|")
         files_inside = csv_info['files'][i].split("|")
-
-        #-----------------------------------------------------------------------------------------------------------
-        json_name = this_identifier + ".json"
-        data = {
-            "identifier": this_identifier ,
-            "ocr_status": "",
-            "local_address": f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/",
-            "date_created": datetime.today().strftime('%Y-%m-%d'),
-            "date_updated":datetime.today().strftime('%Y-%m-%d') ,
-            "collections": csv_info['collections'][i].split("|"),
-            "description": csv_info['description'][i],
-            "topics": csv_info['topics'][i].split("|"),
-        }
-
-        jsonFile = open(f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/{json_name}", "w+")
-        jsonFile.write(data)
-        jsonFile.close()
-        #-----------------------------------------------------------------------------------------------------------
-
-
         attachment = []
         for file in files_inside:
             fileobject = {}
@@ -102,6 +84,20 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
                 f"************* ENTITY WITH IDENTIFIER {this_identifier} NOT INSERTED IN DB. FILES OF THIS ENTITY NOT EXISTS IN SERVER TO COPY **************",
                 "red"))
         else:
+            json_name = this_identifier + ".json"
+            data = {
+              "identifier": this_identifier ,
+              "ocr_status": "",
+              "local_address": f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/",
+              "date_created": datetime.today().strftime('%Y-%m-%d'),
+              "date_updated":datetime.today().strftime('%Y-%m-%d') ,
+              "collections": csv_info['collections'][i].split("|"),
+              "description": csv_info['description'][i],
+              "topics": csv_info['topics'][i].split("|"),
+            }
+            jsonFile = open(f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/{json_name}", "w+")
+            jsonFile.write(f"{data}")
+            jsonFile.close()
             connection_string.insert_one(db_objects)
             print(colored(f"************* ENTITY WITH IDENTIFIER {this_identifier} INSERTED IN DB **************","green"))
     return copied_file

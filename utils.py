@@ -259,3 +259,5 @@ def get_image_files(dir,entity,pdf_file):
         image_files.append(os.path.join(NEW_FILE_BASE_DIR+'/'+dir+'/'+entity+'/'+f'{pdf_file}_files',image))
 #    print(f'$$$$${image_files}$$$$')
     return image_files
+
+
