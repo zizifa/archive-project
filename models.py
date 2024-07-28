@@ -8,7 +8,7 @@ from utils import LOCAL_ADDRESS,MONGO_CON_STR,NEW_FILE_BASE_DIR,OLD_FILE_BASE_DI
 from yattag import Doc, indent
 import json
 from pathlib import Path
-from os import chdir
+from os import chdir, makedirs
 
 # Create your models here.
 
@@ -18,7 +18,7 @@ def connect_to_mongo(*,collection_name):
     connection_string = mydb[f'{collection_name}']
     return connection_string
 
-def add_files_to_collection(*,dir,connection_string,csv_info):
+def add_files_to_collection(*,connection_string,csv_info):
     #headers = ["identifier","title","description","mediatype","language","ocr_status","local_address","collections","date_created","date_updated","topics","attachments"]
     #columes = ["identifier","title","author","collections","description","topics","language","files"]
     # mediatype , ocr_status , local_address,"date_created","date_updated",
@@ -33,43 +33,47 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
             continue
         db_objects['identifier'] = this_identifier
         db_objects['ocr_status'] = ""
-        db_objects['local_address'] = f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/"
+        db_objects['local_address'] = f"{NEW_FILE_BASE_DIR}/{db_objects['identifier']}/"
         db_objects['date_created'] = datetime.today().strftime('%Y-%m-%d')
         db_objects['date_updated'] = datetime.today().strftime('%Y-%m-%d')
         db_objects['collections'] = csv_info['collections'][i].split("|")
         db_objects['description'] = csv_info['description'][i]
         db_objects['topics'] = csv_info['topics'][i].split("|")
-        files_inside = csv_info['files'][i].split("|")
-
-        #-----------------------------------------------------------------------------------------------------------
+        try:
+            files_inside = csv_info['files'][i].split("|")
+        except Exception as e:
+            print(colored(
+                f"************* ENTITY WITH IDENTIFIER {this_identifier} NOT INSERTED IN DB. FILES PROBLEM: {csv_info['files'][i]}\nException: {e} ************",
+                "red"))
+            continue
         json_name = this_identifier + ".json"
         data = {
             "identifier": this_identifier ,
             "ocr_status": "",
-            "local_address": f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/",
+            "local_address": f"{NEW_FILE_BASE_DIR}/{db_objects['identifier']}/",
             "date_created": datetime.today().strftime('%Y-%m-%d'),
             "date_updated":datetime.today().strftime('%Y-%m-%d') ,
             "collections": csv_info['collections'][i].split("|"),
             "description": csv_info['description'][i],
             "topics": csv_info['topics'][i].split("|"),
         }
-
-        jsonFile = open(f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/{json_name}", "w+")
-        jsonFile.write(data)
+        makedirs(f"{NEW_FILE_BASE_DIR}/{db_objects['identifier']}",exist_ok=True)
+        jsonFile = open(f"{NEW_FILE_BASE_DIR}/{db_objects['identifier']}/{json_name}", "w+")
+        jsonFile.write(f"{data}")
         jsonFile.close()
         #-----------------------------------------------------------------------------------------------------------
 
-
+        collection_name = csv_info['collections'][i]
         attachment = []
         for file in files_inside:
             fileobject = {}
             name = file.split("=")[0].strip()
             caption = file.split("=")[1]
-            success_copy = utils.copy_file(old_file_path=f"{OLD_FILE_BASE_DIR}/{dir}/{name}",new_file_path=f"{NEW_FILE_BASE_DIR}/{dir}/{db_objects['identifier']}/")
+            success_copy = utils.copy_file(old_file_path=f"{OLD_FILE_BASE_DIR}/{collection_name}/{name}",new_file_path=f"{NEW_FILE_BASE_DIR}/{db_objects['identifier']}/")
             if success_copy == True:
                 copied_file.append(name)
 #                print(name)
-                metadata = utils.metadata(file_path=f"{OLD_FILE_BASE_DIR}/{dir}/{name}")
+                metadata = utils.metadata(file_path=f"{OLD_FILE_BASE_DIR}/{collection_name}/{name}")
                 fileobject['id'] = metadata['md5']
                 fileobject['name'] = name
                 fileobject['caption'] = caption
@@ -99,8 +103,9 @@ def add_files_to_collection(*,dir,connection_string,csv_info):
         db_objects['attachments'] = attachment
         if this_identifier in not_copied_file_identifier:
             print(colored(
-                f"************* ENTITY WITH IDENTIFIER {this_identifier} NOT INSERTED IN DB. FILES OF THIS ENTITY NOT EXISTS IN SERVER TO COPY **************",
+                f"************* ENTITY WITH IDENTIFIER {this_identifier} INSERTED IN DB. FILES OF THIS ENTITY NOT EXISTS IN SERVER TO COPY **************",
                 "red"))
+            connection_string.insert_one(db_objects)
         else:
             connection_string.insert_one(db_objects)
             print(colored(f"************* ENTITY WITH IDENTIFIER {this_identifier} INSERTED IN DB **************","green"))

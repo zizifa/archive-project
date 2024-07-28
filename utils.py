@@ -27,12 +27,13 @@ MONGO_CON_STR = env("MONGO_CON_STR")
 PROJECT_DIR = env("PROJECT_DIR")
 MONGO_COLLECTION = env("MONGO_COLLECTION")
 DIRS = [
+    'bsknready-testbookreader'
     # 'archive-جامعة الملك سعود- ru archive hast veli fehrestsh nis',
     # 'bgh',
     # 'bkb',
     # 'bkio',
     # 'bm4u',
-    'bnr'
+    # 'bnr'
     # 'bskn',
     # 'gsh',
     # 'ind',
@@ -69,7 +70,7 @@ def copy_file(*,old_file_path,new_file_path):
         return False
 
 def get_from_csv(*,dir):
-    columes = ["identifier","title","author","collections","description","topics","language","files"]
+    columes = ["identifier","title","author","files","topics","collections","attribute:اللغة","description"]
     df = pd.read_csv(filepath_or_buffer=f"{PROJECT_DIR}/{dir}.csv",names=columes,sep=",",header=0,encoding="utf8")
     info_dir = df.to_dict('list')
     # info_dir is dict with every header as key and list of values in csv
